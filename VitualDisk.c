@@ -1,17 +1,17 @@
 
 #include <linux/module.h>
 #include <linux/types.h>
-#include <linux/fs.h>
+#include <linux/fs.h>  // contains of file_operations struct
 #include <linux/errno.h>
 #include <linux/mm.h>
 #include <linux/sched.h>
 #include <linux/init.h>
-#include <linux/cdev.h>
+#include <linux/cdev.h> // contains of cdev struct
 #include <linux/slab.h> // contains of kmalloc()
 #include <asm/io.h>
 //#include <asm/system.h>
 #include <asm/uaccess.h>
-
+// #typedef u_long dev_t;
 #define VIRTUALDISK_SIZE 0x2000
 #define MEM_CLEAR 0x1
 #define PORT1_SET 0x2
