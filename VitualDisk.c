@@ -1,7 +1,7 @@
 
 #include <linux/module.h>
 #include <linux/types.h>
-#include <linux/fs.h>  // contains of file_operations struct
+#include <linux/fs.h> // contains of file_operations struct
 #include <linux/errno.h>
 #include <linux/mm.h>
 #include <linux/sched.h>
@@ -38,7 +38,7 @@ static ssize_t VirtualDisk_read(struct file *filp, char __user *buf, size_t size
 static ssize_t VirtualDisk_write(struct file *filp, const char __user *buf, size_t size, loff_t *ppos);
 static long VirtualDisk_ioctl(struct file *filp, unsigned int cmd, unsigned long arg);
 int VirtualDisk_open(struct inode *inode, struct file *filp);
-static int VirtualDisk_release(struct inode *inode, struct file *filp);
+int VirtualDisk_release(struct inode *inode, struct file *filp);
 
 static const struct file_operations VirtualDisk_fops = 
 {
@@ -108,7 +108,7 @@ int VirtualDisk_open(struct inode *inode, struct file *filp)
     return 0;
 }
 
-static int VirtualDisk_release(struct inode *inode, struct file *filp)
+int VirtualDisk_release(struct inode *inode, struct file *filp)
 {
     struct VirtualDisk *devp = filp->private_data;
     devp->count--;
