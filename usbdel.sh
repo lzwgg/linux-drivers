@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ -d /mnt/usbdisk ];then
+if [ -L /dev/block/usbdisk0 ];then
 	umount /mnt/usbdisk
 	rm -r /mnt/usbdisk
 fi
