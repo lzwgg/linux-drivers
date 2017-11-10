@@ -1,0 +1,30 @@
+**clean kernel:
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
+
+**configure kernel:
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- tisdk_am437x-evm_defconfig
+
+**compile kernel:
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage -j4
+
+**compile modules:
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules -j4
+
+**install modules:
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules_install INSTALL_MOD_PATH=/media/root/rootfs/
+
+**clean uboot:
+make CROSS_COMPILE=arm-linux-gnueabihf- distclean
+
+**configure uboot:
+make CROSS_COMPILE=arm-linux-gnueabihf- am43xx_evm_defconfig
+
+**compile uboot:
+make CROSS_COMPILE=arm-linux-gnueabihf- -j4
+
+cp MLO u-boot.img /media/root/boot/
+
+**tslib configure:
+	./configure --prefix=/usr/local/tslib --host=arm-linux-gnueabihf --enable-static
+then edit config.h ->
+	// #define malloc rpl_malloc

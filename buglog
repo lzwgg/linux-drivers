@@ -1,0 +1,15 @@
+
+
+uboot:
+- modify board/ti/common/board_detect.c
+	ti_i2c_eeprom_get + "return 1;"
+	ti_i2c_eeprom_am_get + "ep->header = TI_EEPROM_HEADER_MAGIC;"
+			+ "strncpy(ep->name, "AM43__GP", 8);"
+
+
+kernel:
+- modify arch/arm/configs/tisdk_am437x-evm_defconfig
+L_20170515	CONFIG_TOUCHSCREEN_ADS7846=y
+L_20170718	CONFIG_OMAP_GPMC_DEBUG=y
+
+

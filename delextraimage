@@ -1,0 +1,11 @@
+- list the extra kernel files
+	dpkg --get-selections | grep linux
+
+- del the extra kernel files and configs
+	- look which kernel using now
+		uname -r
+	- remove the others
+		sudo apt-get purge linux-image-4.4.0-31-generic
+
+- update grub
+	sudo update-grub
