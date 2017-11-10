@@ -1,6 +1,8 @@
-#udevadm info --query=all --path=/class/block/sdb1
+#udevadm info --query=all --path=/class/block/sdb1 /sys目录下
+#udevadm info -a -n [device name] /dev目录下
 #放在/etc/udev/rules.d/
 #add
 ACTION=="add", SUBSYSTEM=="block", ENV{DEVTYPE}=="partition", ENV{ID_BUS}=="usb", ENV{ID_FS_VERSION}=="FAT32", ENV{ID_USB_DRIVER}=="usb-storage", SYMLINK+="block/usbdisk0", RUN+="/bin/bash /sbin/usbadd.sh"
 #remove
-ACTION=="remove", SUBSYSTEM=="block", ENV{DEVTYPE}=="partition", ENV{ID_BUS}=="usb", ENV{ID_FS_VERSION}=="FAT32", ENV{ID_USB_DRIVER}=="usb-storage", SYMLINK+="block/usbdisk0", RUN+="/bin/bash /sbin/usbdel.sh"
+#udevadm monitor --environment --udev 根据所有去除节点中都包含的属性选择去除的判断环境变量
+ACTION=="remove", ENV{ID_BUS}=="usb", ENV{ID_USB_DRIVER}=="usb-storage", RUN+="/bin/bash /sbin/usbdel.sh"
