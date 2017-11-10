@@ -1,3 +1,6 @@
+#udevadm
+#放在/etc/udev/rules.d/
+#add
 ACTION=="add", SUBSYSTEM=="block", ENV{DEVTYPE}=="partition", ENV{ID_BUS}=="usb", ENV{ID_FS_VERSION}=="FAT32", ENV{ID_USB_DRIVER}=="usb-storage", SYMLINK+="block/usbdisk0", RUN+="/bin/bash /sbin/usbadd.sh"
 #remove
 ACTION=="remove", SUBSYSTEM=="block", ENV{DEVTYPE}=="partition", ENV{ID_BUS}=="usb", ENV{ID_FS_VERSION}=="FAT32", ENV{ID_USB_DRIVER}=="usb-storage", SYMLINK+="block/usbdisk0", RUN+="/bin/bash /sbin/usbdel.sh"
