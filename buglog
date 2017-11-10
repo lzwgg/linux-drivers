@@ -9,7 +9,7 @@ uboot:
 
 kernel:
 - modify arch/arm/configs/tisdk_am437x-evm_defconfig
-L_20170515	CONFIG_TOUCHSCREEN_ADS7846=y
+L_20170515	CONFIG_TOUCHSCREEN_ADS7846=y//增加触摸屏
 L_20170718	CONFIG_OMAP_GPMC_DEBUG=y
 
 
